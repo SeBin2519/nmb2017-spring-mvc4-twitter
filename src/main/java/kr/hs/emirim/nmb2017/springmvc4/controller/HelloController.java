@@ -19,11 +19,10 @@ public class HelloController {
 	 private Twitter twitter;
 	 
 	 @RequestMapping("/")
-	 public String tweets(@RequestParam(defaultValue = "masterSpringMVC4") String search, Model model) {
-		  SearchResults searchResults =
-		  twitter.searchOperations().search(search);
-		  List<String> tweets = searchResults.getTweets()             
-		  .stream().map(Tweet::getText).collect(Collectors.toList()); 
+	 public String tweets(@RequestParam(defaultValue = "°í¾çÀÌ") String search, Model model) {
+		  SearchResults searchResults = twitter.searchOperations().search(search);
+		  List<String> tweets = searchResults.getTweets()
+				  .stream().map(Tweet::getText).collect(Collectors.toList()); 
 		  model.addAttribute("tweets", tweets);
 		  return "tweets";
 	 }
@@ -34,6 +33,6 @@ public class HelloController {
 	  List<Tweet> tweets = searchResults.getTweets(); 
 	  model.addAttribute("tweets", tweets);
 	  model.addAttribute("search", search);
-	  return "resultPage";
+	  return "tweets";
 	 }*/
 }
